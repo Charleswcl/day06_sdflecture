@@ -59,7 +59,28 @@ public final class App {
         executorService.execute(mRI3);
         executorService.execute(mRI4);
         executorService.execute(mRI5);
-
         executorService.shutdown();
+
+        MyRunnableInterface<Integer> addOperation = (a, b) -> {
+            return a + b;
+        };
+        MyRunnableInterface<Integer> multiplyOperation = (a, b) -> {
+            return a * b;
+        };
+        MyRunnableInterface<Integer> minusOperation = (a, b) -> {
+            return a - b;
+        };
+        MyRunnableInterface<String> contatenateString = (a, b) -> {
+            return a + b;
+        };
+        MyMessageInterface printString = (a) -> {
+
+            System.out.println(a);
+        };
+        System.out.println("addOperation: " + addOperation.process(1, 1));
+        System.out.println("multiplyOperation: " + multiplyOperation.process(5, 2));
+        System.out.println("minusOperation: " + minusOperation.process(10, 4));
+        System.out.println("contatenateString: " + contatenateString.process("0", "9"));
+        printString.printMessage("Let's take a break at 12pm.");
     }
 }
